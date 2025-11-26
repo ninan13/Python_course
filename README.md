@@ -44,3 +44,44 @@ plt.show()
 - Data Engineers show the widest technical spread, with high demand for cloud platforms (Azure, AWS) and big-data technologies like Spark, indicating more infrastructure-oriented responsibilities. 
 - Data Scientists emphasize programming and statistical analysis, with strong requirements for Python, SQL, and R. Overall, the chart highlights a clear pattern: while all roles share a foundation in SQL and Python, each job type branches into distinct toolsets aligned with its core tasks.
 
+## 2. How are in-demand skills trending for Data Analysts?
+
+To find how skills are trending in 2023 for Data Analysts, I filtered data analyst positions and grouped the skills by the month of the job postings. This got me the top 5 skills of data analysts by month, showing how popular skills were throughout 2023.
+
+View my notebook with detailed steps here: [3_Skills_Trend](3_Project/3_Skills_Trend.ipynb).
+
+### Visualize Data
+
+```python
+
+sns.lineplot(data = df_plot, dashes=False, palette='tab10')
+sns.set_theme(style='ticks')
+
+from matplotlib.ticker import PercentFormatter
+ax = plt.gca()
+ax.yaxis.set_major_formatter(PercentFormatter())
+
+plt.show()
+
+```
+
+### Results
+
+![Trending Top Skills for Data Analysts in Germany](3_Project/images/Trending_Top_Skills_for_Data_Analysts_in_Germany.png)  
+
+
+### Insights:
+1. SQL stays on top all year.
+It’s consistently the most requested skill for Data Analysts in Germany, even though it dips a bit late summer.
+
+2. Python is strong but more volatile.
+It rises in spring/early summer, drops sharply in September, then picks up again toward the end of the year. Still clearly the second-most important skill.
+
+3. Tableau trends downward.
+It starts fairly high but gradually declines through the year. This might signal a shift toward other visualization tools or more emphasis on coding-based skills.
+
+4. R keeps a moderate but steady presence.
+It has ups and downs, but stays mid-range. Some companies still want it, but it’s far less central than SQL/Python.
+
+5. Power BI stays low and stable.
+It’s the least requested of the five but remains consistent. Likely more dependent on specific company ecosystems than industry-wide demand.

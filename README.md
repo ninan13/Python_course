@@ -85,3 +85,69 @@ It has ups and downs, but stays mid-range. Some companies still want it, but it�
 
 5. Power BI stays low and stable.
 It’s the least requested of the five but remains consistent. Likely more dependent on specific company ecosystems than industry-wide demand.
+
+## 3. How well do jobs and skills pay for Data Analysts?
+
+To identify the highest-paying roles and skills, I only got jobs in the United States and looked at their median salary. But first I looked at the salary distributions of common data jobs like Data Scientist, Data Engineer, and Data Analyst, to get an idea of which jobs are paid the most. 
+
+View my notebook with detailed steps here: [4_Salary_Analysis](4_Salary_Analysis.ipynb).
+
+#### Visualize Data 
+
+```python
+sns.boxplot(data=df_US_top6, x='salary_year_avg', y='job_title_short', order=job_order)
+
+ticks_x = plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K')
+plt.gca().xaxis.set_major_formatter(ticks_x)
+plt.show()
+
+```
+
+#### Results
+
+![Salary Distributions of Data Jobs in Germany](3_Project/images/Salary_distribution_Germany.png)  
+*Box plot visualizing the salary distributions for the top 6 data job titles.*
+
+#### Insights
+
+- There's a significant variation in salary ranges across different job titles. Senior Data Scientist positions tend to have the highest salary potential, indicating the high value placed on advanced data skills and experience in the industry.
+
+- The median salaries increase with the seniority and specialization of the roles. Senior Data Scientist, Senior Data Engineer have higher median salaries compared with Senior Data Analyst roles. 
+
+### Highest Paid & Most Demanded Skills for Data Analysts
+
+Next, I narrowed my analysis and focused only on data analyst roles. I looked at the highest-paid skills and the most in-demand skills. I used two bar charts to showcase these.
+
+#### Visualize Data
+
+```python
+
+fig, ax = plt.subplots(2, 1)  
+
+# Top 10 Highest Paid Skills for Data Analysts
+sns.barplot(data = df_DA_top_pay, x = 'median', y = df_DA_top_pay.index, ax = ax[0], hue = 'median', palette = 'dark:b_r')
+
+# Top 10 Most In-Demand Skills for Data Analystsr')
+sns.barplot(data = top_skills, x = 'median', y = top_skills.index, ax = ax[1], hue = 'median', palette = 'light:b')
+
+plt.show()
+
+```
+
+#### Results
+Here's the breakdown of the highest-paid & most in-demand skills for data analysts in the US:
+
+![The Highest Paid & Most In-Demand Skills for Data Analysts in Germany](3_Project/images/Highest_paying_skills.png)
+*Two separate bar graphs visualizing the highest paid skills and most in-demand skills for data analysts in the US.*
+
+#### Insights:
+
+- The best-paid skills aren’t the most in-demand ones. Skills like flask, go, javascript, and pyspark show up at the top of the salary chart but lower in demand. These are more specialized, so companies pay more when they need them.
+
+- Python sits in the sweet spot. It appears both highly paid and highly in demand, making it the strongest all-around skill for a Data Analyst.
+
+- Tableau is in demand but not highly paid. It ranks in the top 10 most requested skills, but it sits at the bottom of the salary chart. Employers want it, but it doesn’t command premium salaries.
+
+- SQL is essential but not as highly paid. SQL appears in both charts, showing stability and demand, but salaries tied to SQL aren’t as high as more niche technical skills like flask or javascript.
+
+- Specialized engineering-leaning tools drive higher pay. Tools like pyspark, go, and flask suggest a crossover into data engineering and software development. When analysts use these, salaries go up.
